@@ -19,7 +19,27 @@ public class Test extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().append("Сумма клиента: "+(int)(Math.random()*100000));
+		
+		String s="<table border=0>";
+		
+		for (int j=0; j<20; j++)
+		{
+			s+="<tr>";
+			for (int i=0; i<20; i++)
+			{
+				String color="";
+				
+				for (int c=0; c<3; c++)
+				{
+					color+=(int)(Math.random()*80)+19;
+				}
+				s+="<td width=20 height=15 bgcolor=#"+color+"></td>";
+			}
+			s+="</tr>";
+		}
+		
+		s+="</table>";
+		response.getWriter().append(s+"");
 	}
 
 }
