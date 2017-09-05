@@ -5,6 +5,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-ZZZ
+	<table border=1 cellpadding=17 bgcolor=#DDEEFF bordercolor=#EEFFFF>
+		<form action="MySQL">
+				<td align="middle" bordercolor=#BBCCDD>
+					Информация о пользователе по его ID
+					<p>
+					<input type="text" pattern="[0-9]{1,9}" name="user_id" size=9>
+					<button type="submit" name="submit_id" value="get_user_by_id">Готово</button>
+				</td>
+				
+				<td align="right" bordercolor=#BBCCDD>
+					Информация о всех пользователях в базе
+					<button type="submit" name="submit_id" value="get_all_users">Получить</button>
+					<p>
+					<hr>
+					Информация о самом богатом пользователе
+					<button type="submit" name="submit_id" value="get_rich_user">Получить</button>
+				</td>
+		
+		</form>
+	</table>
 </body>
 </html>
