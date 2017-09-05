@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Test")
 public class Test extends HttpServlet {
+	private static float[][] matrix=new float[80][40];
+	private static String[] indicate={"◇","◆","◆"};
+	
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -20,12 +23,49 @@ public class Test extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		
+		String s="<font size=1>";
+		
+		for (int i=0; i<40; i++)
+		for (int j=0; j<80; j++)
+		{
+			matrix[j][i]=(int)(Math.random()*3f);
+		}
+		
+		for (int k=0; k<8; k++)
+		for (int i=1; i<39; i++)
+		for (int j=1; j<79; j++)
+		{
+			float summ=matrix[j][i];
+			
+			summ+=matrix[j+1][i];
+			summ+=matrix[j-1][i];
+			
+			summ+=matrix[j][i+1];
+			summ+=matrix[j][i-1];
+			
+			matrix[j][i]=summ/5f;
+		}
+		
+		
+		for (int i=0; i<40; i++)
+		{
+			
+			for (int j=0; j<80; j++)
+			{
+				s+=indicate[(int) matrix[j][i]];
+			}
+			s+="<br>";
+		}
+		
+		s+="</font>";
+		
+		/*
 		String s="<table border=0>";
 		
-		for (int j=0; j<20; j++)
+		for (int j=0; j<40; j++)
 		{
 			s+="<tr>";
-			for (int i=0; i<20; i++)
+			for (int i=0; i<40; i++)
 			{
 				String color="";
 				
@@ -33,12 +73,11 @@ public class Test extends HttpServlet {
 				{
 					color+=(int)(Math.random()*80)+19;
 				}
-				s+="<td width=20 height=15 bgcolor=#"+color+"></td>";
+				s+="<td width=7 height=7 bgcolor=#"+color+"></td>";
 			}
 			s+="</tr>";
-		}
+		}*/
 		
-		s+="</table>";
 		response.getWriter().append(s+"");
 	}
 
